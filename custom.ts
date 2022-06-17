@@ -16,11 +16,12 @@
  * Functions to operate a OLED-module (128x128) with a SH1107 driver that is connected to grove interface (I2C-Interface)
  */
 //% weight=10 color=#9F79EE icon="\uf108" block="OLED-Display SH1107"
-namespace groveoleddisplay {
-
-    let DATAMODE = 0x4000 // Coding for the command byte in order to set OLED-display into "Data Mode"
-    let COMMANDMODE = 0x0000 // Coding for the command byte in order to set OLED-display into "command mode"
-    let OLEDADDRESS = 0x3c // reflects the I2C-address for the OLED DisplayMode
+namespace groveOledDisplay {
+    
+    // Defined bit pattern for adressing the SH1107 ship via I2C
+    const DATAMODE = 0x4000 // Coding for the command byte in order to set OLED-display into "Data Mode"
+    const COMMANDMODE = 0x0000 // Coding for the command byte in order to set OLED-display into "command mode"
+    const OLEDADDRESS = 0x3c // reflects the I2C-address for the OLED DisplayMode
 
     // set the oled display to Data Mode and send one data byte to the oled display
     function sendData(data:number) {
