@@ -143,7 +143,29 @@ namespace groveOledDisplay {
             sendCommand(col_h);
         }
 
-                
+        
+        /**
+         * Flip the dispay up side down
+         * @param direction Down to flip the display and Up to turn back to normal direction 
+         */
+        //% blockId=grove_oled_flip_display 
+        //% block="drehe Display $direction"
+        //% direction.shadow="toggleYesNo"
+        //% weight=85
+        export function flipDisplay(direction:boolean) {  
+            if (direction = true){
+                sendCommand(0xA1);
+                sendCommand(0xC8);
+                basic.showIcon(IconNames.ArrowSouth);
+            } 
+            else {
+                sendCommand(0xA0);
+                sendCommand(0xC0);
+                basic.showIcon(IconNames.ArrowNorth);
+            }     
+
+        }    
+
         /**
          * Clear entire display
         */
