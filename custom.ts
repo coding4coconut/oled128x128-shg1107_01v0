@@ -153,7 +153,7 @@ namespace groveOledDisplay {
         //% direction.shadow="toggleYesNo"
         //% weight=85
         export function flipDisplay(direction:boolean) {  
-            if (direction = true){
+            if (direction){
                 sendCommand(0xA1);
                 sendCommand(0xC8);
                 basic.showIcon(IconNames.ArrowSouth);
