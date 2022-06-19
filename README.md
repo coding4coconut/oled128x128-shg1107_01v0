@@ -3,8 +3,8 @@
 
 ## Beschreibung
 
-Dieses PXT-Paket dient zur Steuerung von OLED-Displays mit einem S01107-Chipsatz und 128x128 Pixel an einem Calliope mini.
-Ich verwende dazu ein 1.12'' OLED Disply mit Grove-Schnittstelle von seeed (Hardwareversion v2.1). Wichtige Eckdaten des Displays:
+Dieses PXT-Paket dient zur Steuerung von **OLED-Displays** mit einem **S01107-Chipsatz** und 128x128 Pixel an einem Calliope mini.
+Ich verwende dazu ein 1.12'' OLED Disply mit **Grove-Schnittstelle** von seeed (Hardwareversion v2.1). Wichtige Eckdaten des Displays:
    * Interface: Grove -> I2C
    * Farbe: einfarbiges Display
    * Controller: SH1107
@@ -22,8 +22,10 @@ Diese Erweiterung basiert auf einer microbit-Erweiterung von https://github.com/
 Diese microbit-Erweiterung läuft jedoch nicht auf dem Calliope mini.
 Es wurden daher die Treiberanpassungen für den Calliope mini vorgenommen und eine neue PXT-Erweiterung erstellt.
 U.a. wurde die Initialisierung des Chipsatzes angepasst sowie Funktionen für die Kontrasteinstellung, Display-Ausrichtung, Hintergrundmodus erstellt.
+
 Weiterhin wurde der Zeichensatz ausgetauscht, da dieser immer zu Abstürzen führte.
-Vielen Dank an Michael Klein - der neue Zeichensatz mit Erweiterung für deutsche Umlaute kommt von:
+
+Vielen Dank an **Michael Klein**  @https://github.com/MKleinSB - der neue Zeichensatz mit Erweiterung für deutsche Umlaute kommt von:
 https://github.com/MKleinSB/pxt-OLED-SSD1306
 MIT License Copyright (c) 2019 Michael Klein
 
@@ -45,22 +47,25 @@ Zur Inbetriebnahme des OLED-Displays ist es wichtig das Display zunächst zu Iin
 ![image](https://user-images.githubusercontent.com/91993589/174493397-f59c0c93-8be7-4eb1-a6f9-f003fa7dd466.png)
 
 Um den Text an eine bestimmte Stelle im Display zu schreiben, muss vorher der Cursor auf die entsprechende Startposition gestellt werden.
-Reihe: 0 - 15 -> in vertikaler Achse wird das Display in Reihen (Zeilen) angesprochen. Eine Reihe(Zeile) hat 8 Pixel in der Höhe. Ein Textzeichen hat auch eine Höhe von 8 Pixel. D.h. es kann ein Text also Reihe für Reihe genau untereinander geschrieben werden.
-Spalte: 0 - 127 -> auf horizontaler Achse erfolgt die Positionierung von 0 bis 127. Jede Spalte hat eine Breite von 1 Pixel.
+   * Reihe: 0 - 15 -> in vertikaler Achse wird das Display in Reihen (Zeilen) angesprochen. Eine Reihe(Zeile) hat 8 Pixel in der Höhe. 
+                      Ein Textzeichen hat auch eine Höhe von 8 Pixel. D.h. es kann ein Text also Reihe für Reihe genau untereinander geschrieben werden.
+   * Spalte: 0 - 127 -> auf horizontaler Achse erfolgt die Positionierung von 0 bis 127. Jede Spalte hat eine Breite von 1 Pixel.
 
 ### Text ausgeben
 
 ![image](https://user-images.githubusercontent.com/91993589/174493574-b078b5c1-fdfc-488d-b834-96040d6fae07.png)
 
 Hier können Sie einen beliebigen Text eingeben, welcher auf dem Display ausgegeben werden soll.
-WICHTIG: Das Display erledigt keine automatischen Zeilenumbrüche. D.h. Zeilenumbrüche müssen manuel programmiert werden - dazu wird einfach ein neuer Startpunkt gesstetzt und der Cursor einfach auf eine neue Zeile gesetzt -> siehe "Startpunkt setzen"
+
+**WICHTIG:** 
+Das Display erledigt **keine automatischen Zeilenumbrüche**. D.h. Zeilenumbrüche müssen manuel programmiert werden - dazu wird einfach ein neuer Startpunkt gesstetzt und der Cursor einfach auf eine neue Zeile gesetzt -> siehe "Startpunkt setzen"
 
 ### Zahl ausgeben
 
 ![image](https://user-images.githubusercontent.com/91993589/174493688-1b0a5ef5-8e5a-4cd1-9eaa-33ee5c3cffb6.png)
 
 Dieser Block gibt eine Integer-Zahl aus. 
-Die Ausgabe erfolgt an der aktuellen Cursor-Position. Ggf. muss vorher der Cursor auf die gewünschte Position gesetz werden -> siehe "Startpunkt setzen"
+Die Ausgabe erfolgt an der **aktuellen Cursor-Position**. Ggf. muss vorher der Cursor auf die gewünschte Position gesetz werden -> siehe "Startpunkt setzen"
 
 ### Horizontale oder vertikale Linien zeichnen
 
@@ -68,16 +73,17 @@ Die Ausgabe erfolgt an der aktuellen Cursor-Position. Ggf. muss vorher der Curso
 
 
 Um eine horizontale oder vertikale Line auf dem Display zu zeichen, muss jeweils der Startpunkt der Linie und die Länge der Linie festgelegt werden.
-=> X : horizontaler Startpunkt -> 0 - 127 -> legt fest, bei welchem Pixel in horizontaler Richtung gestartet werden soll
-=> Y : vertikaler Startpunkt -> 0 - 127 -> legt fest, bei welchem Pixel in vertikaller Richtung gestartet werden soll
-=> Länge: Festlegung der Linienlänge über Anzahl in Pixels -> 0 - 127 
+   * X : horizontaler Startpunkt -> 0 - 127 -> legt fest, bei welchem Pixel in horizontaler Richtung gestartet werden soll
+   * Y : vertikaler Startpunkt -> 0 - 127 -> legt fest, bei welchem Pixel in vertikaller Richtung gestartet werden soll
+   * Länge: Festlegung der Linienlänge über Anzahl in Pixels -> 0 - 127 
 
 ### Display drehen
 
 ![image](https://user-images.githubusercontent.com/91993589/174493867-154312d7-42b8-45d5-89be-d5acd77aee94.png)
 
 Mit diesem Befehlsblock wird die Displayausrichtung um 180° gedreht. 
-Dies kann hilfreich sein, wenn das Display beim Einbau "auf dem Kopf steht". Dann kann mit diesem Befehl das Display die Ausrichtung um 180° gedreht werden um das Display wieder in richtiger Ausrichtung zu haben.
+Dies kann hilfreich sein, wenn das Display beim Einbau "auf dem Kopf steht". 
+Dann kann mit diesem Befehl das Display die Ausrichtung um 180° gedreht werden um das Display wieder in richtiger Ausrichtung zu haben.
 
 ### Rechtecke zeichnen
 
@@ -85,8 +91,8 @@ Dies kann hilfreich sein, wenn das Display beim Einbau "auf dem Kopf steht". Dan
 
 Mit diesem Block können Rechtecke auf dem Display gezeichnet werden.
 Dazu werden jeweils die Koordinaten für das rechte oberer Eck des Rechtecks (von X bis Y) und das linke untere Eck des Rechtecks (bis X und Y) festgelegt.
-=> X : 0 - 127 -> legt fest, bei welchem Pixel in horizontaler Richtung gestartet werden soll
-=> Y : 0 - 127 -> legt fest, bei welchem Pixel in vertikaller Richtung gestartet werden soll
+   * X : 0 - 127 -> legt fest, bei welchem Pixel in horizontaler Richtung gestartet werden soll
+   * Y : 0 - 127 -> legt fest, bei welchem Pixel in vertikaller Richtung gestartet werden soll
 
 
 
