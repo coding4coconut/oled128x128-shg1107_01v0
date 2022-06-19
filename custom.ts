@@ -78,11 +78,9 @@ namespace groveOledDisplay {
      * ! ! ! Only use in Javascriptmode! In Blockmode Makecode adds 
      * extra backslashes. ! ! ! 
     */
-    //% blockId=grove_write_custom_char 
-    //% advanced=true
     //% block="schreibe eigenes Zeichen %c"
     //% advanced=true
-    //% weight=30
+    //% weight=29
     export function writeCustomChar(c: string) {
         for (let i = 0; i < 8; i++) {
             sendData(c.charCodeAt(i));
@@ -236,11 +234,11 @@ namespace groveOledDisplay {
          * @param num could be either black or white
         */
         //% block="verändere Hindergrundfarbe %num"
-        //% num.shadow="toggleBlackWhite"
+        //% bckcolor.shadow="toggleYesNo"
         //% advanced=true
         //% weight=46
-        export function setBackground(num:boolean) {
-            if (num){
+        export function setBackground(bckcolor:boolean) {
+            if (bckcolor){
                 sendCommand(0xA6);               
             } 
             else {
@@ -262,7 +260,7 @@ namespace groveOledDisplay {
         //% row_number.min=0 row_number.max=4
         //% column_number.min=0 column_number.max=32
         //% advanced=true
-        //% weight=20
+        //% weight=10
         export function drawBitmap(x_start:number,y_start:number,row_number:number,column_number:number,bitmap:number[]) {
             let x_end = x_start+row_number;
             let y_end = y_start+column_number;
@@ -293,13 +291,13 @@ namespace groveOledDisplay {
          * @param y vertical position (0 - 127)
          * @param data shall be 0x01 for turning on the respective pixel eg. 0x01
         */
-        //% block="zeichne Pixel bei row|%x|und column|%y|, value:|%data|"
+        //% block="zeichne Pixel bei Zeile|%x|und Spalte|%y|, Wert|%data|"
         //% x.min=0 x.max=127
         //% y.min=0 y.max=127
         //% data.defl=0x01
         //% advanced=true
         //% weight=25
-        function drawPixel(x: number, y:number, data:number) {
+        export function drawPixel(x: number, y:number, data:number) {
             let xTemp = x;
             let yTemp = y
             let dataTemp = data
@@ -341,11 +339,11 @@ namespace groveOledDisplay {
          * @param len defines the length of the vertical line in number of pixels
         */
         //% block="zeichne verticale Linie ab x|%x|und y|%y|, Länge|%len|"
-        //% advanced=false
-        //% weight=69
         //% y.min=0 y.max=127
         //% x.min=0 x.max=127
         //% len.min=1 len.max=128
+        //% advanced=false
+        //% weight=69
         export function drawVLine(x: number, y: number, len: number):void {
             let x_min = 0; 
             let x_max = 0;
@@ -391,12 +389,12 @@ namespace groveOledDisplay {
         */
  
         //% block="zeichne Rechteck von x|%x1|und y|%y1|, bis x|%x2|und y|%y2|"
-        //% advanced=true
-        //% weight=48
         //% y1.min=0 y1.max=127
         //% x1.min=0 x1.max=127
         //% y2.min=0 y2.max=127
         //% x2.min=0 x2.max=127
+        //% advanced=true
+        //% weight=48
         export function drawRec(x1: number, y1: number, x2:number, y2:number):void {
             let temp = 0;
             if (y2<y1) {
