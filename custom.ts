@@ -5,8 +5,9 @@
 // https://github.com/MKleinSB/pxt-OLED-SSD1306
 // MIT License Copyright (c) 2019 Michael Klein
 //
-// Changes by Franz Stolz 17.06.2022
-// MIT License Copyright (c) 2022 Franz Stolz
+// Last updates by Franz Xaver Stolz, 19.06.2022
+//
+// MIT License Copyright (c) 2022 Franz Xaver Stolz
 
 // enumeraion for the display background color
     enum BckColor {
