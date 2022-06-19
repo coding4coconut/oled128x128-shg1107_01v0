@@ -154,7 +154,7 @@ namespace groveOledDisplay {
         //% weight=85
         export function flipDisplay(direction:boolean) {  
             if (direction){
-                sendCommand(0xA1);
+                sendCommand(0xA0);
                 sendCommand(0xC0);
                 clearDisplay();
                 sendCommand(0xb0);
@@ -162,7 +162,7 @@ namespace groveOledDisplay {
                 sendCommand(0x10);
             } 
             else {
-                sendCommand(0xA0);
+                sendCommand(0xA1);
                 sendCommand(0xC8);
                 clearDisplay();
                 sendCommand(0xb0);

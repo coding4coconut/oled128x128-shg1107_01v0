@@ -1,19 +1,21 @@
 input.onButtonPressed(Button.A, function () {
-    groveOledDisplay.drawVLine(0, 120, 128)
     groveOledDisplay.flipDisplay(true)
     UpSide = 1
     basic.showIcon(IconNames.ArrowSouth)
     groveOledDisplay.setBackground(BckColor.WHITE)
     groveOledDisplay.writeString("HELLO XAVER äß")
+    groveOledDisplay.drawVLine(0, 120, 128)
 })
 input.onButtonPressed(Button.AB, function () {
     groveOledDisplay.setContrast(10)
     groveOledDisplay.setTextXY(10, 0)
     CounterSTRING = convertToText(Counter)
     groveOledDisplay.writeString(CounterSTRING)
+    groveOledDisplay.drawPixel(30, 8, 1)
 })
 input.onButtonPressed(Button.B, function () {
     groveOledDisplay.setContrast(255)
+    groveOledDisplay.flipDisplay(false)
     groveOledDisplay.drawPixel(10, 8, 1)
     groveOledDisplay.drawRec(
     90,
@@ -21,7 +23,6 @@ input.onButtonPressed(Button.B, function () {
     120,
     120
     )
-    groveOledDisplay.flipDisplay(false)
     groveOledDisplay.writeString("HELLO XAVER äß")
     UpSide = 0
     basic.showIcon(IconNames.ArrowNorth)
