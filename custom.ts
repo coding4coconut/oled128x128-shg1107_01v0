@@ -99,7 +99,7 @@ namespace groveOledDisplay {
         /**
          * Initialize the OLED Display
         */
-        //% block="inititialisiere OLED Display"
+        //% block="initialisiere OLED Display"
         //% advanced=false
         //% weight=100
         export function init() {
@@ -127,8 +127,8 @@ namespace groveOledDisplay {
 
         /**
          * Set cursor position at the diplay
-         * @param row which row to display - range from 0 to 15
-         * @param col which col to display - range from 0 to 127
+         * @param row which row to display - range from 0 to 15 (Page-addressing)
+         * @param col which col to display - range from 0 to 127 (Pixel-adressing)
         */
         //% block="setzte Cursor auf Reihe|%row|und Spalte|%col"
         //% row.min=0 row.max=15
@@ -340,12 +340,12 @@ namespace groveOledDisplay {
         }
 
         /**
-         * Draw a vertical line
+         * Draw a verticale line
          * @param x defines the horizontal (x) start position for the line
          * @param y defines the vertical (y) start position for the line
          * @param len defines the length of the vertical line in number of pixels
         */
-        //% block="zeichne verticale Linie ab x|%x|und y|%y|, Länge|%len|"
+        //% block="zeichne vertikale Linie ab x|%x|und y|%y| mit Länge|%len|"
         //% y.min=0 y.max=127
         //% x.min=0 x.max=127
         //% len.min=1 len.max=128
@@ -395,14 +395,16 @@ namespace groveOledDisplay {
          * @param y2 y-coordinate for the lower right corner of the rectangle
         */
  
-        //% block="zeichne Rechteck von x|%x1|und y|%y1|, bis x|%x2|und y|%y2|"
+        //% block="zeichne Rechteck |von x1 %x1 und y1 %y1 | bis x2 %x2 und y2 %y2|"
         //% y1.min=0 y1.max=127
         //% x1.min=0 x1.max=127
         //% y2.min=0 y2.max=127
         //% x2.min=0 x2.max=127
         //% advanced=true
         //% weight=31
-        export function drawRec(x1: number, y1: number, x2:number, y2:number):void {
+        export function drawRec(
+            x1:number, y1:number,
+            x2:number, y2:number):void {
             let temp = 0;
             if (y2<y1) {
                 temp = y2;

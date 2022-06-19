@@ -1,5 +1,5 @@
 // Hier kann man Tests durchführen; diese Datei wird nicht kompiliert, wenn dieses Paket als Erweiterung verwendet wird.
-
+/*
 let Counter = 754
 let CounterSTRING = "111"
 groveOledDisplay.init()
@@ -17,3 +17,4 @@ basic.pause(500)
 groveOledDisplay.setBackground(BckColor.WHITE)
 basic.pause(500)
 groveOledDisplay.setBackground(BckColor.BLACK)
+*/

@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="cY4[DX?O:sDnfdppp%1R" x="0" y="0"/></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="p071k[Skx!h0g|oi-2v_">Counter</variable><variable id="Lx!:I_Ye==lVx$#|9}rL">CounterSTRING</variable></variables><block type="pxt-on-start" id="6lvA_H}WP|aAbEb!ig|j" x="64" y="1"/></xml>
