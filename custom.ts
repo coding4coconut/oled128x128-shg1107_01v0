@@ -59,7 +59,6 @@ namespace groveOledDisplay {
     /**
      * Writes a string at the current cursor position at the display.
      */
-    //% blockId=grove_write_string
     //% block="schreibe %s|auf das Display"
     //% s.defl="Hello"
     //% weight=90
@@ -82,8 +81,8 @@ namespace groveOledDisplay {
     //% blockId=grove_write_custom_char 
     //% advanced=true
     //% block="schreibe eigenes Zeichen %c"
-    //% weight=50
     //% advanced=true
+    //% weight=30
     export function writeCustomChar(c: string) {
         for (let i = 0; i < 8; i++) {
             sendData(c.charCodeAt(i));
@@ -94,7 +93,6 @@ namespace groveOledDisplay {
         /**
          * Initialize the OLED Display
         */
-        //% blockId=grove_oled_init 
         //% block="inititialisiere OLED Display"
         //% advanced=false
         //% weight=100
@@ -126,7 +124,6 @@ namespace groveOledDisplay {
          * @param row which row to display - range from 0 to 15
          * @param col which col to display - range from 0 to 127
         */
-        //% blockId=grove_oled_set_text_xy 
         //% block="setzte Cursor auf Reihe|%row|und Spalte|%col"
         //% row.min=0 row.max=15
         //% col.min=0 col.max=127
@@ -146,7 +143,6 @@ namespace groveOledDisplay {
          * Flip the dispay up side down
          * @param direction Down to flip the display and Up to turn back to normal direction 
          */
-        //% blockId=grove_oled_flip_display 
         //% block="drehe Display $direction"
         //% direction.shadow="toggleYesNo"
         //% advanced=false
@@ -174,8 +170,8 @@ namespace groveOledDisplay {
         /**
          * Clear entire display
         */
-        //% blockId=grove_oled_clear_display 
         //% block="loesche Display"
+        //% advanced=false
         //% weight=99
         export function clearDisplay() {
             for(let i=0; i<16;i++){
@@ -193,8 +189,8 @@ namespace groveOledDisplay {
          * Display an integer number at the current cursor position
          * @param num an integer number to display.
         */
-        //% blockId=grove_oled_put_number 
         //% block="schreibe Zahl |%num|"
+        //% advanced=false
         //% weight=89
         export function putNumber(num:number) {
             
@@ -206,12 +202,11 @@ namespace groveOledDisplay {
          * Adjust the contrast of the display
          * @param num contrast value from 0 to 255.
         */
-        //% blockId=grove_oled_set_contrast 
         //% block="verändere Display-Kontrast |%num|"
         //% num.min=0 num.max=255
         //% num.defl=80
         //% advanced=true
-        //% weight=65
+        //% weight=50
         export function setContrast(num:number) {
              let TempCont = num
                 
@@ -240,11 +235,10 @@ namespace groveOledDisplay {
          * Adjust the background color of the display
          * @param num could be either black or white
         */
-        //% blockId=grove_oled_set_background 
         //% block="verändere Hindergrundfarbe %num"
         //% num.shadow="toggleBlackWhite"
         //% advanced=true
-        //% weight=64
+        //% weight=46
         export function setBackground(num:boolean) {
             if (num){
                 sendCommand(0xA6);               
@@ -262,14 +256,13 @@ namespace groveOledDisplay {
          * @param column_number horizontal size of the bitmap in number of pixels (max 32pixel)
          * @param bitmap array with bitmap data 
         */
-        //% blockId=grove_oled_draw_bitmap 
         //% block="zeichne bitmap bei row|%x_start|und column|%y_start|, size: row|%row_number|und column|%column_number|, bitmap:|%bitmap|"
         //% x.min=0 x.max=15
         //% y.min=0 y.max=127
         //% row_number.min=0 row_number.max=4
         //% column_number.min=0 column_number.max=32
         //% advanced=true
-        //% weight=40
+        //% weight=20
         export function drawBitmap(x_start:number,y_start:number,row_number:number,column_number:number,bitmap:number[]) {
             let x_end = x_start+row_number;
             let y_end = y_start+column_number;
@@ -300,13 +293,12 @@ namespace groveOledDisplay {
          * @param y vertical position (0 - 127)
          * @param data shall be 0x01 for turning on the respective pixel eg. 0x01
         */
-        //% blockId=grove_oled_draw_pixel
-        //% block="zeichne Pixel bei row|%x|und column|%y|, value: |%data|"
+        //% block="zeichne Pixel bei row|%x|und column|%y|, value:|%data|"
         //% x.min=0 x.max=127
         //% y.min=0 y.max=127
-        //% data.defl = 0x01
+        //% data.defl=0x01
         //% advanced=true
-        //% weight=50
+        //% weight=25
         function drawPixel(x: number, y:number, data:number) {
             let xTemp = x;
             let yTemp = y
@@ -328,8 +320,8 @@ namespace groveOledDisplay {
          * @param y defines the vertical (y) start position for the line
          * @param len defines the length of the line in number of pixels
         */
-        //% blockId=grove_oled_draw_hline 
         //% block="zeichne horizontale Linie ab x|%x|und y|%y|mit Länge|%len|"
+        //% advanced=false
         //% weight=70
         //% y.min=0 y.max=127
         //% x.min=0 x.max=127
@@ -348,8 +340,8 @@ namespace groveOledDisplay {
          * @param y defines the vertical (y) start position for the line
          * @param len defines the length of the vertical line in number of pixels
         */
-        //% blockId=grove_oled_draw_vline 
         //% block="zeichne verticale Linie ab x|%x|und y|%y|, Länge|%len|"
+        //% advanced=false
         //% weight=69
         //% y.min=0 y.max=127
         //% x.min=0 x.max=127
@@ -397,10 +389,10 @@ namespace groveOledDisplay {
          * @param x2 x-coordinate for the lower right corner of the rectangle
          * @param y2 y-coordinate for the lower right corner of the rectangle
         */
-        //% blockId=grove_oled_draw_rec 
+ 
         //% block="zeichne Rechteck von x|%x1|und y|%y1|, bis x|%x2|und y|%y2|"
-        //% weight=59
         //% advanced=true
+        //% weight=48
         //% y1.min=0 y1.max=127
         //% x1.min=0 x1.max=127
         //% y2.min=0 y2.max=127

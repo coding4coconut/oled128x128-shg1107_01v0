@@ -6,8 +6,6 @@ input.onButtonPressed(Button.A, function () {
 input.onButtonPressed(Button.AB, function () {
     groveOledDisplay.setContrast(10)
     groveOledDisplay.setTextXY(10, 0)
-    groveOledDisplay.putNumber(16)
-    groveOledDisplay.putNumber(333)
     CounterSTRING = convertToText(Counter)
     groveOledDisplay.writeString(CounterSTRING)
 })
