@@ -15,6 +15,11 @@
 //% weight=10 color=#9F79EE icon="\uf108" block="OLED-Display SH1107"
 namespace groveOledDisplay {
     
+    enum BckColor {
+        BLACK = 0x00,
+        WHITE = 0x01
+    }
+
     // Defined bit pattern for adressing the SH1107 ship via I2C
     const DATAMODE = 0x4000 // Coding for the command byte in order to set OLED-display into "Data Mode"
     const COMMANDMODE = 0x0000 // Coding for the command byte in order to set OLED-display into "command mode"
@@ -233,16 +238,15 @@ namespace groveOledDisplay {
          * Adjust the background color of the display
          * @param num could be either black or white
         */
-        //% block="verändere Hindergrundfarbe %num"
-        //% bckcolor.shadow="toggleYesNo"
+        //% block="verändere Hindergrundfarbe %bckcolor"
         //% advanced=true
         //% weight=46
-        export function setBackground(bckcolor:boolean) {
+        export function setBackground(bckcolor:BckColor) {
             if (bckcolor){
-                sendCommand(0xA6);               
+                sendCommand(0xA7);               
             } 
             else {
-                sendCommand(0xA7);                          
+                sendCommand(0xA6);                          
             }            
         } 
         
@@ -299,8 +303,8 @@ namespace groveOledDisplay {
         //% weight=25
         export function drawPixel(x: number, y:number, data:number) {
             let xTemp = x;
-            let yTemp = y
-            let dataTemp = data
+            let yTemp = y;
+            let dataTemp = data;
             if (x<0) xTemp = 0;
             else if (x>127) xTemp = 127;
             if (y<0) y = 0;
@@ -394,7 +398,7 @@ namespace groveOledDisplay {
         //% y2.min=0 y2.max=127
         //% x2.min=0 x2.max=127
         //% advanced=true
-        //% weight=48
+        //% weight=31
         export function drawRec(x1: number, y1: number, x2:number, y2:number):void {
             let temp = 0;
             if (y2<y1) {
