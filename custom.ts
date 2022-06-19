@@ -8,6 +8,12 @@
 // Changes by Franz Stolz 17.06.2022
 // MIT License Copyright (c) 2022 Franz Stolz
 
+// enumeraion for the display background color
+    enum BckColor {
+        BLACK = 0x00,
+        WHITE = 0x01
+    }
+
 
 /**
  * Functions to operate a OLED-module (128x128) with a SH1107 driver that is connected to grove interface (I2C-Interface)
@@ -15,10 +21,6 @@
 //% weight=10 color=#9F79EE icon="\uf108" block="OLED-Display SH1107"
 namespace groveOledDisplay {
     
-    enum BckColor {
-        BLACK = 0x00,
-        WHITE = 0x01
-    }
 
     // Defined bit pattern for adressing the SH1107 ship via I2C
     const DATAMODE = 0x4000 // Coding for the command byte in order to set OLED-display into "Data Mode"
