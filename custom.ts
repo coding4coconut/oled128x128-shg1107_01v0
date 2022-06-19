@@ -1,15 +1,12 @@
 /**
  * Provides functions to control any OLED display (128x128) with a SH1107 chip along with Calliope Mini and I2C-interface
  */
-// Maincode from https://github.com/Microbit-Grove-Library/pxt-OledDisplay
-// MIT License Copyright (c) 2018 Seeed Technology Inc
-//
 // Thanks to Michael Klein for the regular character code and the ExtendedCharactersCode
 // https://github.com/MKleinSB/pxt-OLED-SSD1306
 // MIT License Copyright (c) 2019 Michael Klein
 //
 // Changes by Franz Stolz 17.06.2022
-// MIT License Copyright (c) 22 Franz Stolz
+// MIT License Copyright (c) 2022 Franz Stolz
 
 
 /**
@@ -133,6 +130,7 @@ namespace groveOledDisplay {
         //% block="setzte Cursor auf Reihe|%row|und Spalte|%col"
         //% row.min=0 row.max=15
         //% col.min=0 col.max=127
+        //% advanced=false
         //% weight=91
         export function setTextXY(row:number, col:number) {
             let col_l = col % 16;
@@ -151,17 +149,24 @@ namespace groveOledDisplay {
         //% blockId=grove_oled_flip_display 
         //% block="drehe Display $direction"
         //% direction.shadow="toggleYesNo"
+        //% advanced=false
         //% weight=85
         export function flipDisplay(direction:boolean) {  
             if (direction){
                 sendCommand(0xA1);
                 sendCommand(0xC8);
-                basic.showIcon(IconNames.ArrowSouth);
+                clearDisplay();
+                sendCommand(0xb0);
+                sendCommand(0x0);
+                sendCommand(0x10);
             } 
             else {
                 sendCommand(0xA0);
                 sendCommand(0xC0);
-                basic.showIcon(IconNames.ArrowNorth);
+                clearDisplay();
+                sendCommand(0xb0);
+                sendCommand(0x0);
+                sendCommand(0x10);
             }     
 
         }    
@@ -193,7 +198,8 @@ namespace groveOledDisplay {
         //% weight=89
         export function putNumber(num:number) {
             
-            writeString("" + num);
+            //writeString("" + num);
+            writeString(num.toString());
         } 
 
         /**
@@ -207,7 +213,7 @@ namespace groveOledDisplay {
         //% advanced=true
         //% weight=62
         export function setContrast(num:number) {
-                let TempCont = num
+             let TempCont = num
                 
                 if (num < 0) {
                     TempCont = 0;
@@ -228,8 +234,25 @@ namespace groveOledDisplay {
                 NumberFormat.UInt16BE,
                 false
                 );
-        } 
 
+        } 
+        /**
+         * Adjust the background color of the display
+         * @param num could be either black or white
+        */
+        //% blockId=grove_oled_set_background 
+        //% block="verändere Hindergrundfarbe |%num|"
+        //% num.shadow="toggleBlackWhite"
+        //% advanced=true
+        //% weight=55
+        export function setBackground(num:boolean) {
+            if (num){
+                sendCommand(0xA6);               
+            } 
+            else {
+                sendCommand(0xA7);                          
+            }            
+        } 
         /**
          * Display a bitmap (max. 32x32 pixels)
          * @param x_start horizontal start position (upper left corner of the bitmap)
@@ -245,7 +268,7 @@ namespace groveOledDisplay {
         //% row_number.min=0 row_number.max=4
         //% column_number.min=0 column_number.max=32
         //% advanced=true
-        //% weight=59
+        //% weight=50
         export function drawBitmap(x_start:number,y_start:number,row_number:number,column_number:number,bitmap:number[]) {
             let x_end = x_start+row_number;
             let y_end = y_start+column_number;
@@ -269,7 +292,20 @@ namespace groveOledDisplay {
             
         }
         
-        // function to draw a single pixel at the display
+    
+        /**
+         * draw a single pixel at the display
+         * @param x horizontal position (0 - 127)
+         * @param y vertical position (0 - 127)
+         * @param data shall be 0x01 for turning on the respective pixel eg. 0x01
+        */
+        //% blockId=grove_oled_set_background 
+        //% block="zeichne Pixel bei row|%x|und column|%y|, value: |%data|"
+        //% x.min=0 x.max=127
+        //% y.min=0 y.max=127
+        //% data.defl = 0x01
+        //% advanced=true
+        //% weight=54
         function drawPixel(x: number, y:number, data:number) {
             let xTemp = x;
             let yTemp = y
