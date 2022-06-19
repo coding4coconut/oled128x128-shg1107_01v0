@@ -30,7 +30,8 @@ MIT License Copyright (c) 2019 Michael Klein
 
 #### Initialisierung und erster Test
 
-![image](https://user-images.githubusercontent.com/91993589/174493165-82edb050-d012-4d0d-8d61-11d421f95379.png)
+![image](https://user-images.githubusercontent.com/91993589/174495154-84380dcf-a531-42a0-ac62-c520feea4e4e.png)
+
 
 Zur Inbetriebnahme des OLED-Displays ist es wichtig das Display zunächst zu Iinitialisieren und den Speicher des Displays zu löschen.
 
