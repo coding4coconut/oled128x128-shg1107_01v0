@@ -91,7 +91,7 @@ Dazu werden jeweils die Koordinaten für das rechte oberer Eck des Rechtecks (vo
 
 #### Metadaten (verwendet für Suche, Rendering)
 
-* for PXT/calliopemini OLED SH1101 Grove
+* for PXT/calliopemini OLED SH1107 Grove calliope
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
 
 ## License
