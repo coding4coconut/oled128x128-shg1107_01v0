@@ -82,7 +82,7 @@ namespace groveOledDisplay {
     //% blockId=grove_write_custom_char 
     //% advanced=true
     //% block="schreibe eigenes Zeichen %c"
-    //% weight=61
+    //% weight=50
     //% advanced=true
     export function writeCustomChar(c: string) {
         for (let i = 0; i < 8; i++) {
@@ -211,7 +211,7 @@ namespace groveOledDisplay {
         //% num.min=0 num.max=255
         //% num.defl=80
         //% advanced=true
-        //% weight=62
+        //% weight=65
         export function setContrast(num:number) {
              let TempCont = num
                 
@@ -241,10 +241,10 @@ namespace groveOledDisplay {
          * @param num could be either black or white
         */
         //% blockId=grove_oled_set_background 
-        //% block="verändere Hindergrundfarbe |%num|"
+        //% block="verändere Hindergrundfarbe %num"
         //% num.shadow="toggleBlackWhite"
         //% advanced=true
-        //% weight=55
+        //% weight=64
         export function setBackground(num:boolean) {
             if (num){
                 sendCommand(0xA6);               
@@ -253,6 +253,7 @@ namespace groveOledDisplay {
                 sendCommand(0xA7);                          
             }            
         } 
+        
         /**
          * Display a bitmap (max. 32x32 pixels)
          * @param x_start horizontal start position (upper left corner of the bitmap)
@@ -268,7 +269,7 @@ namespace groveOledDisplay {
         //% row_number.min=0 row_number.max=4
         //% column_number.min=0 column_number.max=32
         //% advanced=true
-        //% weight=50
+        //% weight=40
         export function drawBitmap(x_start:number,y_start:number,row_number:number,column_number:number,bitmap:number[]) {
             let x_end = x_start+row_number;
             let y_end = y_start+column_number;
@@ -299,13 +300,13 @@ namespace groveOledDisplay {
          * @param y vertical position (0 - 127)
          * @param data shall be 0x01 for turning on the respective pixel eg. 0x01
         */
-        //% blockId=grove_oled_set_background 
+        //% blockId=grove_oled_draw_pixel
         //% block="zeichne Pixel bei row|%x|und column|%y|, value: |%data|"
         //% x.min=0 x.max=127
         //% y.min=0 y.max=127
         //% data.defl = 0x01
         //% advanced=true
-        //% weight=54
+        //% weight=50
         function drawPixel(x: number, y:number, data:number) {
             let xTemp = x;
             let yTemp = y
@@ -398,7 +399,7 @@ namespace groveOledDisplay {
         */
         //% blockId=grove_oled_draw_rec 
         //% block="zeichne Rechteck von x|%x1|und y|%y1|, bis x|%x2|und y|%y2|"
-        //% weight=60
+        //% weight=59
         //% advanced=true
         //% y1.min=0 y1.max=127
         //% x1.min=0 x1.max=127
